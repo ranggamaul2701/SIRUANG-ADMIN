@@ -1,0 +1,400 @@
+/* ===========================
+   RESET & BASE
+   =========================== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --navy:        #060C1A;
+    --surface:     #0D1526;
+    --glass:       rgba(255, 255, 255, 0.04);
+    --glass-border: rgba(59, 139, 255, 0.18);
+    --accent:      #3B8BFF;
+    --accent-dim:  rgba(59, 139, 255, 0.12);
+    --text-1:      #F0F4FF;
+    --text-2:      #7A8BA8;
+    --text-3:      #3D5270;
+    --yellow:      #FCD34D;
+    --yellow-dim:  rgba(251, 191, 36, 0.12);
+    --yellow-border: rgba(251, 191, 36, 0.3);
+    --green:       #34D399;
+    --green-dim:   rgba(16, 185, 129, 0.1);
+    --green-border: rgba(16, 185, 129, 0.25);
+    --red:         #F87171;
+    --red-dim:     rgba(239, 68, 68, 0.1);
+    --red-border:  rgba(239, 68, 68, 0.25);
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--navy);
+    color: var(--text-1);
+    min-height: 100vh;
+}
+
+/* ===========================
+   HEADER
+   =========================== */
+header {
+    background: linear-gradient(180deg, rgba(59,139,255,0.07) 0%, transparent 100%);
+    border-bottom: 0.5px solid var(--glass-border);
+    padding: 0 32px;
+}
+
+.header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 22px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.logo-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--accent-dim);
+    border: 1px solid rgba(59, 139, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.logo-icon i {
+    font-size: 22px;
+    color: var(--accent);
+}
+
+.logo-text h1 {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--text-1);
+}
+
+.logo-text p {
+    font-size: 12px;
+    color: var(--text-2);
+    margin-top: 2px;
+    letter-spacing: 0.2px;
+}
+
+.badge-live {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(16, 185, 129, 0.1);
+    border: 0.5px solid rgba(16, 185, 129, 0.3);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #34D399;
+    letter-spacing: 0.3px;
+}
+
+.dot-pulse {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #34D399;
+    animation: pulse 2s ease infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.3; }
+}
+
+/* ===========================
+   CONTAINER
+   =========================== */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 28px 32px;
+}
+
+/* ===========================
+   STAT CARDS
+   =========================== */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.card-stat {
+    background: var(--glass);
+    border: 0.5px solid var(--glass-border);
+    border-radius: 14px;
+    padding: 20px 20px 18px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+}
+
+.card-stat::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0.6;
+}
+
+.card-stat.accent-yellow::before { background: linear-gradient(90deg, transparent, var(--yellow), transparent); }
+.card-stat.accent-green::before  { background: linear-gradient(90deg, transparent, var(--green), transparent); }
+.card-stat.accent-red::before    { background: linear-gradient(90deg, transparent, var(--red), transparent); }
+
+.stat-icon {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    font-size: 24px;
+    color: rgba(59, 139, 255, 0.15);
+}
+
+.card-stat.accent-yellow .stat-icon { color: rgba(251, 191, 36, 0.2); }
+.card-stat.accent-green  .stat-icon { color: rgba(16, 185, 129, 0.2); }
+.card-stat.accent-red    .stat-icon { color: rgba(239, 68, 68, 0.2); }
+
+.stat-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-3);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.card-stat h2 {
+    font-size: 34px;
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1;
+}
+
+.card-stat.accent-yellow h2 { color: var(--yellow); }
+.card-stat.accent-green  h2 { color: var(--green); }
+.card-stat.accent-red    h2 { color: var(--red); }
+
+.stat-sub {
+    font-size: 11px;
+    color: var(--text-3);
+    margin-top: 5px;
+}
+
+/* ===========================
+   TABLE
+   =========================== */
+.table-container {
+    background: var(--glass);
+    border: 0.5px solid var(--glass-border);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.table-header {
+    padding: 14px 20px;
+    border-bottom: 0.5px solid var(--glass-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.table-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-1);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.table-title i {
+    font-size: 15px;
+    color: var(--accent);
+}
+
+.table-count {
+    font-size: 11px;
+    color: var(--text-2);
+}
+
+.table-scroll {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    min-width: 700px;
+}
+
+thead tr {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+th {
+    padding: 11px 16px;
+    text-align: left;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-3);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 0.5px solid var(--glass-border);
+    white-space: nowrap;
+}
+
+td {
+    padding: 13px 16px;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.03);
+    color: var(--text-1);
+    vertical-align: middle;
+}
+
+tbody tr:hover td {
+    background: rgba(59, 139, 255, 0.04);
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Room cell */
+.room-name {
+    font-weight: 500;
+    color: var(--text-1);
+}
+
+.room-code {
+    font-size: 11px;
+    color: var(--text-2);
+    margin-top: 2px;
+}
+
+/* Borrower cell */
+.borrower {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--accent-dim);
+    border: 1px solid rgba(59, 139, 255, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--accent);
+    flex-shrink: 0;
+    text-transform: uppercase;
+}
+
+/* Time cell */
+.time-cell {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--text-2);
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.time-cell i {
+    font-size: 13px;
+    color: var(--text-3);
+}
+
+/* Status badges */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.menunggu {
+    background: var(--yellow-dim);
+    border: 0.5px solid var(--yellow-border);
+    color: var(--yellow);
+}
+
+.disetujui {
+    background: var(--green-dim);
+    border: 0.5px solid var(--green-border);
+    color: var(--green);
+}
+
+.ditolak {
+    background: var(--red-dim);
+    border: 0.5px solid var(--red-border);
+    color: var(--red);
+}
+
+/* Action buttons */
+.actions {
+    display: flex;
+    gap: 6px;
+}
+
+.btn-action {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    border: 0.5px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.03);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-2);
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.btn-action:hover {
+    background: var(--accent-dim);
+    border-color: rgba(59, 139, 255, 0.4);
+    color: var(--accent);
+}
+
+.btn-action i {
+    font-size: 13px;
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+@media (max-width: 768px) {
+    header { padding: 0 16px; }
+    .container { padding: 20px 16px; }
+    .logo-text h1 { font-size: 15px; }
+}
+
+@media (max-width: 500px) {
+    .stats { grid-template-columns: 1fr 1fr; }
+}

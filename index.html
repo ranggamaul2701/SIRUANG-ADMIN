@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIRUANG ADMIN</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <div class="logo-wrap">
+                <div class="logo-icon">
+                    <i class="ti ti-building-estate" aria-hidden="true"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>SIRUANG ADMIN</h1>
+                    <p>Sistem Informasi Reservasi Ruangan</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="badge-live">
+                    <span class="dot-pulse"></span>
+                    Live
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <div class="stats">
+            <div class="card-stat">
+                <i class="ti ti-calendar-event stat-icon" aria-hidden="true"></i>
+                <div class="stat-label">Total Booking</div>
+                <h2 id="totalBooking">0</h2>
+                <div class="stat-sub">Semua waktu</div>
+            </div>
+            <div class="card-stat accent-yellow">
+                <i class="ti ti-clock stat-icon" aria-hidden="true"></i>
+                <div class="stat-label">Menunggu</div>
+                <h2 id="totalMenunggu">0</h2>
+                <div class="stat-sub">Perlu ditinjau</div>
+            </div>
+            <div class="card-stat accent-green">
+                <i class="ti ti-circle-check stat-icon" aria-hidden="true"></i>
+                <div class="stat-label">Disetujui</div>
+                <h2 id="totalDisetujui">0</h2>
+                <div class="stat-sub">Bulan ini</div>
+            </div>
+            <div class="card-stat accent-red">
+                <i class="ti ti-circle-x stat-icon" aria-hidden="true"></i>
+                <div class="stat-label">Ditolak</div>
+                <h2 id="totalDitolak">0</h2>
+                <div class="stat-sub">Bulan ini</div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <div class="table-header">
+                <span class="table-title">
+                    <i class="ti ti-list" aria-hidden="true"></i>
+                    Daftar Reservasi
+                </span>
+                <span class="table-count" id="tableCount">0 data tercatat</span>
+            </div>
+
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ruangan</th>
+                            <th>Peminjam</th>
+                            <th>Keperluan</th>
+                            <th>Tanggal</th>
+                            <th>Jam</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookingTable">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="module" src="app.js"></script>
+
+</body>
+</html>
